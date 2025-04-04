@@ -11,12 +11,8 @@ const page = async () => {
   return (
     <>
       <div className="flex flex-col justify-between h-[90%]">
-        <div className="flex flex-col gap-10">
-          
-        </div>
-        <div>
-          
-        </div>
+        <div className="flex flex-col gap-10"></div>
+        <div></div>
       </div>
     </>
   );

@@ -30,19 +30,34 @@ export default function CardComponent({task = { payload: [] }}) {
           </p>
 
           {/* status */}
-          <div className={`rounded-full w-8 h-8 bg-watermelon-red`}></div>
+          <div
+            className={`rounded-full w-8 h-8 ${
+              task.status === "NOT_STARTED"
+                ? "bg-red-500"
+                : task.status === "IN_PROGRESS"
+                ? "bg-yellow-500"
+                : "bg-green-500"
+            }`}
+          ></div>
         </div>
       </div>
 
       {/* progress */}
       <div className="flex justify-between items-center border-t border-t-gray-300 p-5">
-        <Select>
+      <Select>
           <SelectTrigger
-            className={`w-36 truncate border-watermelon-red text-watermelon-red `}
+            className={`w-36 truncate 
+              ${
+                task.status === "NOT_STARTED"
+                  ? "border-red-500 text-red-500"
+                  : task.status === "IN_PROGRESS"
+                  ? "border-yellow-500 text-yellow-500"
+                  : "border-green-500 text-green-500"
+              } `}
           >
-            <SelectValue placeholder={"NOT_STARTED"} />
+            <SelectValue placeholder={task.status} />
           </SelectTrigger>
-          <SelectContent className={`bg-white`}>
+          <SelectContent>
             <SelectItem value="NOT_STARTED">NOT_STARTED</SelectItem>
             <SelectItem value="IN_PROGRESS">IN_PROGRESS</SelectItem>
             <SelectItem value="FINISHED">FINISHED</SelectItem>
